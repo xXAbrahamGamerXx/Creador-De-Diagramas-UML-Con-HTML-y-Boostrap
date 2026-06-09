@@ -1,0 +1,72 @@
+DiagramasMVC/
+├── index.php                         # Punto de entrada único (Front Controller)
+├── .htaccess                         # Reescritura de URLs → index.php
+│
+├── app/                              # CÓDIGO PRINCIPAL
+│   ├── bootstrap.php                 # Constantes, autoload de clases, sesión
+│   ├── routes.php                    # Registro de rutas URL → Controlador::método
+│   │
+│   ├── core/                         # NÚCLEO del framework MVC
+│   │   ├── Database.php              # Conexión PDO (credenciales aquí)
+│   │   ├── Session.php               # Gestión de sesiones y roles
+│   │   ├── FileManager.php           # Archivos JSON de diagramas en disco
+│   │   ├── Controller.php            # Controlador base (render, json, redirigir)
+│   │   ├── Model.php                 # Modelo base (conexión a BD)
+│   │   └── Router.php                # Enrutador HTTP GET/POST
+│   │
+│   ├── models/                       # MODELOS — datos y lógica de BD
+│   │   ├── UserModel.php             # CRUD tabla usuarios
+│   │   └── DiagramModel.php          # CRUD tabla diagramas + archivos
+│   │
+│   ├── controllers/                  # CONTROLADORES — reciben peticiones
+│   │   ├── AuthController.php        # Login, registro, logout
+│   │   ├── DashboardController.php   # Panel alumno + API diagramas
+│   │   ├── EditorController.php      # Editor UML + API guardar/cargar
+│   │   ├── AlumnoController.php      # API grupos y tareas del alumno
+│   │   ├── MaestroController.php     # Panel maestro + API maestro
+│   │   └── AdminController.php       # Panel admin + API administración
+│   │
+│   └── views/                        # VISTAS — HTML presentado al usuario
+│       ├── auth/
+│       │   ├── login.php
+│       │   └── register.php
+│       ├── dashboard/
+│       │   └── index.php
+│       ├── editor/
+│       │   └── index.php
+│       ├── maestro/
+│       │   └── index.php
+│       └── admin/
+│           └── index.php
+│
+├── public/                           # ARCHIVOS PÚBLICOS (acceso directo)
+│   ├── assets/
+│   │   ├── css/style.css
+│   │   ├── js/editor.js
+│   │   └── img/                      # SVGs de elementos UML por tipo
+│   │       ├── DiagramadeCasosdeUso/
+│   │       ├── DiagramadeClases/
+│   │       ├── DiagramasdeInteraccion/
+│   │       ├── DiagramadeActividades/
+│   │       ├── DiagramadeEstados/
+│   │       ├── DiagramadeComponentes/
+│   │       ├── DiagramadeDespliegue/
+│   │       ├── DiagramadeObjetos/
+│   │       ├── DiagramadeComunicacion/
+│   │       ├── DiagramadeTiempo/
+│   │       └── Recursos/
+│   └── uploads/                      # JSON de diagramas por usuario
+│       ├── .htaccess                 # Bloquea acceso directo desde browser
+│       ├── usuario_1/
+│       ├── usuario_2/
+│       └── ...
+│
+├── config/
+│   └── database.php                  # Alias → apunta a app/core/Database.php
+│
+└── basededatos+info/
+    ├── Base/
+    │   └── diagramas_v2.sql
+    ├── Readme_MVC.txt                # Guía de instalación y rutas
+    ├── EstructuraProyectoMVC.txt     # Este archivo
+    └── ...                           # Documentación original

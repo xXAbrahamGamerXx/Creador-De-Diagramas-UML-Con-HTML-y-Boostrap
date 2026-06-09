@@ -1,0 +1,84 @@
+-- Crear base de datos
+CREATE DATABASE IF NOT EXISTS diagramas_db;
+USE diagramas_db;
+
+-- Tabla de usuarios
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    nombre_completo VARCHAR(100),
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ultimo_acceso TIMESTAMP NULL,
+    activo BOOLEAN DEFAULT TRUE,
+    rol ENUM('usuario', 'admin') DEFAULT 'usuario'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Tabla de diagramas
+CREATE TABLE IF NOT EXISTS diagramas (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    usuario_id INT NOT NULL,
+    titulo VARCHAR(200) NOT NULL,
+    descripcion TEXT,
+    tipo_diagrama VARCHAR(50) DEFAULT 'usecase',
+    contenido_json LONGTEXT NULL,
+    archivo_ruta VARCHAR(500) NULL,
+    archivo_tamano INT DEFAULT 0,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_modificacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    version INT DEFAULT 1,
+    tamano INT DEFAULT 0,
+    etiquetas VARCHAR(500),
+    compartido BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE,
+    INDEX idx_usuario (usuario_id),
+    INDEX idx_fecha (fecha_modificacion)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Tabla de versiones de diagramas (historial)
+CREATE TABLE IF NOT EXISTS versiones_diagrama (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    diagrama_id INT NOT NULL,
+    version INT NOT NULL,
+    archivo_ruta VARCHAR(500) NULL,
+    contenido_json LONGTEXT NULL,
+    fecha_guardado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    comentario VARCHAR(255),
+    FOREIGN KEY (diagrama_id) REFERENCES diagramas(id) ON DELETE CASCADE,
+    UNIQUE KEY unique_version (diagrama_id, version)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Tabla de plantillas de diagramas
+CREATE TABLE IF NOT EXISTS plantillas (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    tipo_diagrama VARCHAR(50),
+    descripcion TEXT,
+    contenido_json LONGTEXT NOT NULL,
+    creado_por INT,
+    usado_count INT DEFAULT 0,
+    FOREIGN KEY (creado_por) REFERENCES usuarios(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Tabla de compartidos (para colaboración futura)
+CREATE TABLE IF NOT EXISTS diagramas_compartidos (
+    diagrama_id INT NOT NULL,
+    usuario_id INT NOT NULL,
+    permiso ENUM('ver', 'editar') DEFAULT 'ver',
+    fecha_compartido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (diagrama_id, usuario_id),
+    FOREIGN KEY (diagrama_id) REFERENCES diagramas(id) ON DELETE CASCADE,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Insertar usuario de prueba
+INSERT INTO usuarios (username, email, password, nombre_completo) VALUES 
+('admin', 'admin@ejemplo.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Administrador'),
+('demo', 'demo@ejemplo.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Usuario Demo');
+-- Nota: La contraseña para ambos es "password" (hasheada con password_hash)
+
+-- Insertar plantillas de ejemplo
+INSERT INTO plantillas (nombre, tipo_diagrama, descripcion, contenido_json) VALUES 
+('Diagrama de Flujo Básico', 'flowchart', 'Plantilla para comenzar un diagrama de flujo', '{"nodes":[],"connections":[]}'),
+('Caso de Uso Login', 'usecase', 'Diagrama de caso de uso para autenticación', '{"nodes":[],"connections":[]}');

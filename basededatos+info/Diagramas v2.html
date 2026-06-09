@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrama Visual Profesional</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Estilo tipo Bootstrap oscuro */
+        .bg-black {
+            background-color: #000 !important;
+        }
+
+        .bg-dark-card {
+            background-color: #1a1a1a !important;
+        }
+
+        .border-dark-gray {
+            border-color: #333 !important;
+        }
+
+        .text-gray {
+            color: #999 !important;
+        }
+
+        /* Canvas con cuadrícula oscura */
+        .canvas-container {
+            background-color: #0a0a0a;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            height: calc(100vh - 60px);
+            overflow: auto;
+            position: relative;
+            cursor: default;
+        }
+
+        /* Nodos */
+        .diagram-node {
+            position: absolute;
+            background: #2a2a2a;
+            border: 2px solid #444;
+            border-radius: 8px;
+            padding: 12px 16px;
+            min-width: 120px;
+            text-align: center;
+            cursor: move;
+            color: #fff;
+            font-weight: 500;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            transition: all 0.2s;
+            user-select: none;
+            z-index: 10;
+        }
+
+        .diagram-node:hover {
+            border-color: #0d6efd;
+            box-shadow: 0 8px 15px rgba(13, 110, 253, 0.3);
+        }
+
+        .diagram-node.selected {
+            border-color: #0d6efd;
+            border-width: 3px;
+            background: #1e3a5f;
+            box-shadow: 0 0 15px rgba(13, 110, 253, 0.5);
+        }
+
+        /* Tipos específicos de nodos */
+        .node-start {
+            border-radius: 50%;
+            background: #198754;
+            border-color: #0f5132;
+        }
+
+        .node-end {
+            border-radius: 50%;
+            background: #dc3545;
+            border-color: #b02a37;
+        }
+
+        .node-decision {
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            background: #fd7e14;
+            border-color: #ca6510;
+        }
+
+        .node-process {
+            background: #0d6efd;
+            border-color: #0a58ca;
+        }
+
+        .node-io {
+            border-radius: 50% 50% 0 0;
+            background: #6f42c1;
+            border-color: #5936a3;
+        }
+
+        /* Puntos de conexión */
+        .connection-point {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #0d6efd;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            cursor: crosshair;
+            z-index: 20;
+            opacity: 0.8;
+        }
+
+        .connection-point:hover {
+            background: #0b5ed7;
+            transform: translate(-50%, -50%) scale(1.3);
+            opacity: 1;
+        }
+
+        /* Líneas de conexión SVG */
+        .connection-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .connection-line path {
+            stroke: #0d6efd;
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 5,5;
+        }
+
+        /* Barra de herramientas */
+        .toolbar {
+            background-color: #1a1a1a;
+            border-bottom: 1px solid #333;
+            padding: 8px 16px;
+        }
+
+        .toolbar button {
+            background: #2a2a2a;
+            border: 1px solid #444;
+            color: #fff;
+            margin-right: 8px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .toolbar button:hover:not(:disabled) {
+            background: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+        .toolbar button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* Panel lateral */
+        .sidebar {
+            background-color: #1a1a1a;
+            border-right: 1px solid #333;
+            height: calc(100vh - 60px);
+            overflow-y: auto;
+        }
+
+        .shape-item {
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            cursor: grab;
+            transition: all 0.2s;
+            color: #fff;
+        }
+
+        .shape-item:hover {
+            border-color: #0d6efd;
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        .shape-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: #0d6efd;
+        }
+
+        /* Panel de propiedades */
+        .properties-panel {
+            background-color: #1a1a1a;
+            border-left: 1px solid #333;
+            height: calc(100vh - 60px);
+            overflow-y: auto;
+        }
+
+        .properties-panel input,
+        .properties-panel select,
+        .properties-panel textarea {
+            background: #2a2a2a;
+            border: 1px solid #444;
+            color: #fff;
+            border-radius: 6px;
+            padding: 8px 12px;
+            width: 100%;
+        }
+
+        .properties-panel input:focus,
+        .properties-panel select:focus,
+        .properties-panel textarea:focus {
+            border-color: #0d6efd;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.25);
+        }
+
+        .properties-panel label {
+            color: #999;
+            font-size: 0.875rem;
+            margin-bottom: 4px;
+        }
+
+        /* Scrollbars personalizadas */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Mini mapa */
+        .minimap {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 200px;
+            height: 150px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            z-index: 1000;
+            opacity: 0.8;
+        }
+
+        .history-indicator {
+            color: #0d6efd;
+            font-size: 0.875rem;
+            margin-left: 16px;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <!-- Barra de herramientas superior -->
+    <div class="toolbar d-flex align-items-center">
+        <button class="btn-toolbar" id="undoBtn" disabled title="Deshacer (Ctrl+Z)">
+            <i class="bi bi-arrow-counterclockwise"></i> Deshacer
+        </button>
+        <button class="btn-toolbar" id="redoBtn" disabled title="Rehacer (Ctrl+Y)">
+            <i class="bi bi-arrow-clockwise"></i> Rehacer
+        </button>
+        <div class="vr mx-3 bg-secondary"></div>
+        <button class="btn-toolbar" id="newBtn">
+            <i class="bi bi-file-earmark"></i> Nuevo
+        </button>
+        <button class="btn-toolbar" id="saveBtn">
+            <i class="bi bi-save"></i> Guardar
+        </button>
+        <button class="btn-toolbar" id="loadBtn">
+            <i class="bi bi-folder-open"></i> Cargar
+        </button>
+        <div class="vr mx-3 bg-secondary"></div>
+        <button class="btn-toolbar" id="exportBtn">
+            <i class="bi bi-image"></i> Exportar
+        </button>
+        <div class="ms-auto">
+            <span class="history-indicator" id="historyStatus">
+                <i class="bi bi-clock-history"></i> <span id="historyCount">0</span> cambios
+            </span>
+        </div>
+    </div>
+
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <!-- Sidebar izquierdo - Figuras según diagrama -->
+            <div class="col-auto sidebar p-3" style="width: 280px;">
+                <div class="mb-4">
+                    <label class="text-gray text-uppercase small fw-bold mb-2">
+                        <i class="bi bi-diagram-3"></i> Tipo de Diagrama
+                    </label>
+                    <select class="form-select bg-dark text-light border-dark" id="diagramTypeSelect">
+                        <option value="flowchart">Diagrama de Flujo</option>
+                        <option value="sequence">Diagrama de Secuencia</option>
+                        <option value="class">Diagrama de Clases</option>
+                        <option value="usecase">Diagrama de Casos de Uso</option>
+                        <option value="activity">Diagrama de Actividades</option>
+                        <option value="state">Diagrama de Estados</option>
+                        <option value="component">Diagrama de Componentes</option>
+                        <option value="deployment">Diagrama de Despliegue</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="text-gray text-uppercase small fw-bold mb-2">
+                        <i class="bi bi-shapes"></i> Figuras Disponibles
+                    </label>
+                    <div id="shapesContainer" class="d-grid gap-2" style="grid-template-columns: repeat(2, 1fr);">
+                        <!-- Las figuras se generarán dinámicamente según el tipo de diagrama -->
+                    </div>
+                    <div class="mt-2 small text-gray">
+                        <i class="bi bi-info-circle"></i> Arrastra las figuras al lienzo
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <label class="text-gray text-uppercase small fw-bold mb-2">
+                        <i class="bi bi-layers"></i> Capas y Elementos
+                    </label>
+                    <div class="bg-dark border border-dark-gray rounded p-2" style="max-height: 200px; overflow-y: auto;" id="layersList">
+                        <!-- Lista de nodos -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Canvas central -->
+            <div class="col p-0">
+                <div class="canvas-container" id="canvasContainer">
+                    <div id="diagramCanvas" style="position: relative; height: 100%;">
+                        <!-- Los nodos y conexiones se generan aquí -->
+                    </div>
+
+                    <!-- Mini mapa de navegación -->
+                    <div class="minimap">
+                        <div class="p-2 border-bottom border-dark-gray">
+                            <small class="text-gray">Vista general</small>
+                        </div>
+                        <div id="minimapCanvas" style="height: calc(100% - 40px);"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel derecho - Propiedades -->
+            <div class="col-auto properties-panel p-3" style="width: 300px;">
+                <h6 class="text-white mb-3"><i class="bi bi-sliders2"></i> Propiedades</h6>
+                
+                <div id="propertiesContent">
+                    <div class="mb-3">
+                        <label class="text-gray">Texto / Nombre</label>
+                        <input type="text" class="form-control bg-dark text-light border-dark" id="nodeText" placeholder="Escribe el texto...">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="text-gray">ID del elemento</label>
+                        <input type="text" class="form-control bg-dark text-light border-dark" id="nodeId" placeholder="ej: proceso1">
+                        <small class="text-gray">Identificador único</small>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="text-gray">Tipo de elemento</label>
+                        <select class="form-select bg-dark text-light border-dark" id="nodeType">
+                            <option value="default">Normal</option>
+                            <option value="start">Inicio</option>
+                            <option value="end">Fin</option>
+                            <option value="process">Proceso</option>
+                            <option value="decision">Decisión</option>
+                            <option value="io">Entrada/Salida</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="text-gray">Color de fondo</label>
+                        <input type="color" class="form-control form-control-color bg-dark border-dark" id="nodeColor" value="#0d6efd">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="text-gray">Descripción</label>
+                        <textarea class="form-control bg-dark text-light border-dark" id="nodeDescription" rows="2" placeholder="Descripción adicional..."></textarea>
+                    </div>
+                    
+                    <button class="btn btn-primary w-100" id="applyPropertiesBtn">
+                        <i class="bi bi-check-lg"></i> Aplicar cambios
+                    </button>
+                    
+                    <hr class="border-dark-gray">
+                    
+                    <button class="btn btn-outline-danger w-100" id="deleteElementBtn">
+                        <i class="bi bi-trash"></i> Eliminar elemento
+                    </button>
+                </div>
+
+                <div id="noSelectionMessage" class="text-center text-gray mt-4" style="display: none;">
+                    <i class="bi bi-arrow-up-left-circle" style="font-size: 48px;"></i>
+                    <p class="mt-2">Selecciona un elemento para editar sus propiedades</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de ayuda -->
+    <div class="modal fade" id="helpModal" tabindex="-1">
+        <div class="modal-dialog modal-dark">
+            <div class="modal-content bg-dark text-light border-dark-gray">
+                <div class="modal-header border-dark-gray">
+                    <h5 class="modal-title"><i class="bi bi-question-circle"></i> Ayuda del Editor</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Atajos de teclado:</h6>
+                    <ul class="list-unstyled">
+                        <li><kbd class="bg-dark text-light border border-secondary">Ctrl + Z</kbd> Deshacer</li>
+                        <li><kbd class="bg-dark text-light border border-secondary">Ctrl + Y</kbd> Rehacer</li>
+                        <li><kbd class="bg-dark text-light border border-secondary">Supr</kbd> Eliminar seleccionado</li>
+                        <li><kbd class="bg-dark text-light border border-secondary">Ctrl + A</kbd> Seleccionar todo</li>
+                    </ul>
+                    <h6 class="mt-3">Cómo usar:</h6>
+                    <p>1. Selecciona el tipo de diagrama en el panel izquierdo</p>
+                    <p>2. Arrastra las figuras disponibles al lienzo</p>
+                    <p>3. Conecta las figuras usando los puntos verdes</p>
+                    <p>4. Usa Deshacer/Rehacer para corregir errores</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Clase para manejar el historial (Undo/Redo)
+        class HistoryManager {
+            constructor() {
+                this.undoStack = [];
+                this.redoStack = [];
+                this.maxStackSize = 50;
+            }
+
+            push(state) {
+                // Limitar el tamaño del historial
+                if (this.undoStack.length >= this.maxStackSize) {
+                    this.undoStack.shift();
+                }
+                
+                // Hacer una copia profunda del estado
+                const stateCopy = JSON.parse(JSON.stringify(state));
+                this.undoStack.push(stateCopy);
+                this.redoStack = []; // Limpiar redo stack cuando hay nueva acción
+                this.updateUI();
+            }
+
+            undo() {
+                if (this.undoStack.length === 0) return null;
+                
+                const currentState = this.undoStack.pop();
+                this.redoStack.push(currentState);
+                this.updateUI();
+                
+                return this.undoStack.length > 0 ? 
+                    JSON.parse(JSON.stringify(this.undoStack[this.undoStack.length - 1])) : null;
+            }
+
+            redo() {
+                if (this.redoStack.length === 0) return null;
+                
+                const state = this.redoStack.pop();
+                this.undoStack.push(state);
+                this.updateUI();
+                
+                return JSON.parse(JSON.stringify(state));
+            }
+
+            canUndo() {
+                return this.undoStack.length > 0;
+            }
+
+            canRedo() {
+                return this.redoStack.length > 0;
+            }
+
+            updateUI() {
+                document.getElementById('undoBtn').disabled = !this.canUndo();
+                document.getElementById('redoBtn').disabled = !this.canRedo();
+                document.getElementById('historyCount').textContent = this.undoStack.length;
+            }
+
+            clear() {
+                this.undoStack = [];
+                this.redoStack = [];
+                this.updateUI();
+            }
+        }
+
+        // Clase principal del editor
+        class DiagramEditor {
+            constructor() {
+                this.nodes = [];
+                this.connections = [];
+                this.selectedNode = null;
+                this.diagramType = 'flowchart';
+                this.history = new HistoryManager();
+                this.nodeIdCounter = 1;
+                this.dragging = false;
+                this.dragStartX = 0;
+                this.dragStartY = 0;
+                this.connecting = false;
+                this.connectionStart = null;
+
+                // Definir figuras por tipo de diagrama
+                this.shapesByType = {
+                    flowchart: [
+                        { type: 'start', icon: 'bi bi-play-circle', label: 'Inicio', class: 'node-start' },
+                        { type: 'process', icon: 'bi bi-square', label: 'Proceso', class: 'node-process' },
+                        { type: 'decision', icon: 'bi bi-gem', label: 'Decisión', class: 'node-decision' },
+                        { type: 'io', icon: 'bi bi-box-arrow-in-right', label: 'Entrada/Salida', class: 'node-io' },
+                        { type: 'end', icon: 'bi bi-stop-circle', label: 'Fin', class: 'node-end' }
+                    ],
+                    sequence: [
+                        { type: 'actor', icon: 'bi bi-person', label: 'Actor', class: '' },
+                        { type: 'lifeline', icon: 'bi bi-arrow-down', label: 'Línea de vida', class: '' },
+                        { type: 'message', icon: 'bi bi-arrow-right', label: 'Mensaje', class: '' },
+                        { type: 'activation', icon: 'bi bi-bar-chart', label: 'Activación', class: '' }
+                    ],
+                    class: [
+                        { type: 'class', icon: 'bi bi-box', label: 'Clase', class: '' },
+                        { type: 'interface', icon: 'bi bi-diagram-2', label: 'Interfaz', class: '' },
+                        { type: 'abstract', icon: 'bi bi-file-code', label: 'Abstracta', class: '' },
+                        { type: 'enum', icon: 'bi bi-list', label: 'Enumeración', class: '' }
+                    ],
+                    usecase: [
+                        { type: 'actor', icon: 'bi bi-person', label: 'Actor', class: '' },
+                        { type: 'usecase', icon: 'bi bi-circle', label: 'Caso de Uso', class: '' },
+                        { type: 'system', icon: 'bi bi-box', label: 'Sistema', class: '' },
+                        { type: 'include', icon: 'bi bi-arrow-right', label: 'Include', class: '' },
+                        { type: 'extend', icon: 'bi bi-arrow-left', label: 'Extend', class: '' }
+                    ],
+                    activity: [
+                        { type: 'start', icon: 'bi bi-play-circle', label: 'Inicio', class: 'node-start' },
+                        { type: 'activity', icon: 'bi bi-square', label: 'Actividad', class: 'node-process' },
+                        { type: 'decision', icon: 'bi bi-gem', label: 'Decisión', class: 'node-decision' },
+                        { type: 'fork', icon: 'bi bi-diagram-3', label: 'Bifurcación', class: '' },
+                        { type: 'end', icon: 'bi bi-stop-circle', label: 'Fin', class: 'node-end' }
+                    ],
+                    state: [
+                        { type: 'state', icon: 'bi bi-square', label: 'Estado', class: '' },
+                        { type: 'initial', icon: 'bi bi-circle', label: 'Inicial', class: 'node-start' },
+                        { type: 'final', icon: 'bi bi-stop-circle', label: 'Final', class: 'node-end' },
+                        { type: 'choice', icon: 'bi bi-gem', label: 'Elección', class: 'node-decision' }
+                    ],
+                    component: [
+                        { type: 'component', icon: 'bi bi-box', label: 'Componente', class: '' },
+                        { type: 'interface', icon: 'bi bi-plug', label: 'Interfaz', class: '' },
+                        { type: 'port', icon: 'bi bi-circle', label: 'Puerto', class: '' }
+                    ],
+                    deployment: [
+                        { type: 'node', icon: 'bi bi-cpu', label: 'Nodo', class: '' },
+                        { type: 'device', icon: 'bi bi-hdd', label: 'Dispositivo', class: '' },
+                        { type: 'artifact', icon: 'bi bi-file-binary', label: 'Artefacto', class: '' }
+                    ]
+                };
+
+                this.init();
+            }
+
+            init() {
+                this.loadEventListeners();
+                this.loadShapesForType(this.diagramType);
+                this.updateLayersList();
+                this.pushToHistory(); // Estado inicial
+                
+                // Crear nodo de ejemplo
+                setTimeout(() => {
+                    this.createNode(300, 200, 'Inicio', 'start', 'start');
+                }, 100);
+            }
+
+            loadEventListeners() {
+                // Canvas events
+                const canvas = document.getElementById('diagramCanvas');
+                canvas.addEventListener('dragover', (e) => e.preventDefault());
+                canvas.addEventListener('drop', (e) => this.handleDrop(e));
+                canvas.addEventListener('mousedown', (e) => this.handleCanvasMouseDown(e));
+                canvas.addEventListener('click', (e) => this.handleCanvasClick(e));
+
+                // Toolbar buttons
+                document.getElementById('undoBtn').addEventListener('click', () => this.undo());
+                document.getElementById('redoBtn').addEventListener('click', () => this.redo());
+                document.getElementById('newBtn').addEventListener('click', () => this.newDiagram());
+                document.getElementById('saveBtn').addEventListener('click', () => this.saveDiagram());
+                document.getElementById('loadBtn').addEventListener('click', () => this.loadDiagram());
+                document.getElementById('exportBtn').addEventListener('click', () => this.exportDiagram());
+
+                // Diagram type selector
+                document.getElementById('diagramTypeSelect').addEventListener('change', (e) => {
+                    this.diagramType = e.target.value;
+                    this.loadShapesForType(this.diagramType);
+                });
+
+                // Properties panel
+                document.getElementById('applyPropertiesBtn').addEventListener('click', () => this.applyProperties());
+                document.getElementById('deleteElementBtn').addEventListener('click', () => this.deleteSelected());
+
+                // Keyboard shortcuts
+                document.addEventListener('keydown', (e) => {
+                    if (e.ctrlKey && e.key === 'z') {
+                        e.preventDefault();
+                        this.undo();
+                    } else if (e.ctrlKey && e.key === 'y') {
+                        e.preventDefault();
+                        this.redo();
+                    } else if (e.key === 'Delete') {
+                        this.deleteSelected();
+                    }
+                });
+            }
+
+            loadShapesForType(type) {
+                const container = document.getElementById('shapesContainer');
+                container.innerHTML = '';
+                
+                const shapes = this.shapesByType[type] || this.shapesByType.flowchart;
+                
+                shapes.forEach(shape => {
+                    const shapeEl = document.createElement('div');
+                    shapeEl.className = 'shape-item';
+                    shapeEl.draggable = true;
+                    shapeEl.dataset.type = shape.type;
+                    shapeEl.innerHTML = `
+                        <div class="shape-icon"><i class="${shape.icon}"></i></div>
+                        <div class="small">${shape.label}</div>
+                    `;
+                    
+                    shapeEl.addEventListener('dragstart', (e) => {
+                        e.dataTransfer.setData('text/plain', JSON.stringify({
+                            type: shape.type
+                        }));
+                    });
+                    
+                    container.appendChild(shapeEl);
+                });
+            }
+
+            handleDrop(e) {
+                e.preventDefault();
+                const data = JSON.parse(e.dataTransfer.getData('text/plain'));
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const nodeId = this.generateNodeId();
+                this.createNode(x, y, 'Nuevo elemento', data.type, nodeId);
+                this.pushToHistory();
+            }
+
+            generateNodeId() {
+                return `${this.diagramType}_${this.nodeIdCounter++}`;
+            }
+
+            createNode(x, y, text, type, id) {
+                const node = {
+                    id: id,
+                    x: x,
+                    y: y,
+                    text: text,
+                    type: type,
+                    width: 140,
+                    height: 70,
+                    color: this.getColorForType(type),
+                    description: ''
+                };
+                
+                this.nodes.push(node);
+                this.render();
+                return node;
+            }
+
+            getColorForType(type) {
+                const colors = {
+                    start: '#198754',
+                    end: '#dc3545',
+                    decision: '#fd7e14',
+                    process: '#0d6efd',
+                    io: '#6f42c1',
+                    default: '#0d6efd'
+                };
+                return colors[type] || colors.default;
+            }
+
+            render() {
+                const canvas = document.getElementById('diagramCanvas');
+                
+                // Limpiar canvas
+                canvas.innerHTML = '';
+                
+                // Dibujar conexiones primero (para que estén detrás)
+                this.connections.forEach(conn => this.renderConnection(conn));
+                
+                // Dibujar nodos
+                this.nodes.forEach(node => {
+                    const nodeEl = document.createElement('div');
+                    nodeEl.className = `diagram-node ${this.getNodeClass(node.type)}`;
+                    
+                    if (this.selectedNode && this.selectedNode.id === node.id) {
+                        nodeEl.classList.add('selected');
+                    }
+                    
+                    nodeEl.style.cssText = `
+                        left: ${node.x}px;
+                        top: ${node.y}px;
+                        width: ${node.width}px;
+                        min-height: ${node.height}px;
+                    `;
+                    
+                    nodeEl.innerHTML = `
+                        <div>${node.text}</div>
+                        <div class="connection-point" style="top: 50%; left: 0;" data-node="${node.id}" data-side="left"></div>
+                        <div class="connection-point" style="top: 50%; left: 100%;" data-node="${node.id}" data-side="right"></div>
+                        <div class="connection-point" style="top: 0; left: 50%;" data-node="${node.id}" data-side="top"></div>
+                        <div class="connection-point" style="top: 100%; left: 50%;" data-node="${node.id}" data-side="bottom"></div>
+                    `;
+                    
+                    // Eventos del nodo
+                    nodeEl.addEventListener('mousedown', (e) => this.startDraggingNode(e, node));
+                    nodeEl.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        this.selectNode(node);
+                    });
+                    
+                    // Eventos de puntos de conexión
+                    nodeEl.querySelectorAll('.connection-point').forEach(point => {
+                        point.addEventListener('mousedown', (e) => this.startConnection(e, node));
+                    });
+                    
+                    canvas.appendChild(nodeEl);
+                });
+                
+                this.updateLayersList();
+                this.updatePropertiesPanel();
+            }
+
+            renderConnection(conn) {
+                const fromNode = this.nodes.find(n => n.id === conn.fromNode);
+                const toNode = this.nodes.find(n => n.id === conn.toNode);
+                
+                if (!fromNode || !toNode) return;
+                
+                const fromPoint = this.getConnectionPoint(fromNode, conn.fromSide);
+                const toPoint = this.getConnectionPoint(toNode, conn.toSide);
+                
+                const svgNS = "http://www.w3.org/2000/svg";
+                const svg = document.createElementNS(svgNS, "svg");
+                svg.setAttribute("class", "connection-line");
+                
+                const path = document.createElementNS(svgNS, "path");
+                
+                // Curva Bezier para conexiones suaves
+                const midX = (fromPoint.x + toPoint.x) / 2;
+                const midY = (fromPoint.y + toPoint.y) / 2;
+                const d = `M ${fromPoint.x} ${fromPoint.y} Q ${midX} ${fromPoint.y}, ${midX} ${midY} T ${toPoint.x} ${toPoint.y}`;
+                
+                path.setAttribute("d", d);
+                svg.appendChild(path);
+                
+                document.getElementById('diagramCanvas').appendChild(svg);
+            }
+
+            getConnectionPoint(node, side) {
+                switch(side) {
+                    case 'left': return { x: node.x, y: node.y + node.height/2 };
+                    case 'right': return { x: node.x + node.width, y: node.y + node.height/2 };
+                    case 'top': return { x: node.x + node.width/2, y: node.y };
+                    case 'bottom': return { x: node.x + node.width/2, y: node.y + node.height };
+                    default: return { x: node.x + node.width/2, y: node.y + node.height/2 };
+                }
+            }
+
+            getNodeClass(type) {
+                const classes = {
+                    start: 'node-start',
+                    end: 'node-end',
+                    decision: 'node-decision',
+                    process: 'node-process',
+                    io: 'node-io'
+                };
+                return classes[type] || '';
+            }
+
+            selectNode(node) {
+                this.selectedNode = node;
+                this.render();
+                this.updatePropertiesPanel();
+            }
+
+            startDraggingNode(e, node) {
+                e.preventDefault();
+                this.dragging = true;
+                this.selectedNode = node;
+                this.dragStartX = e.clientX - node.x;
+                this.dragStartY = e.clientY - node.y;
+                
+                const onMouseMove = (e) => {
+                    if (!this.dragging) return;
+                    
+                    node.x = e.clientX - this.dragStartX;
+                    node.y = e.clientY - this.dragStartY;
+                    this.render();
+                };
+                
+                const onMouseUp = () => {
+                    this.dragging = false;
+                    document.removeEventListener('mousemove', onMouseMove);
+                    document.removeEventListener('mouseup', onMouseUp);
+                    this.pushToHistory();
+                };
+                
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+            }
+
+            startConnection(e, fromNode) {
+                e.stopPropagation();
+                this.connecting = true;
+                this.connectionStart = {
+                    node: fromNode.id,
+                    side: e.target.dataset.side,
+                    x: e.clientX,
+                    y: e.clientY
+                };
+                
+                const onMouseMove = (e) => {
+                    // Aquí se podría dibujar una línea temporal
+                };
+                
+                const onMouseUp = (e) => {
+                    const target = document.elementFromPoint(e.clientX, e.clientY);
+                    if (target && target.classList.contains('connection-point')) {
+                        const toNodeId = target.dataset.node;
+                        const toSide = target.dataset.side;
+                        
+                        if (this.connectionStart.node !== toNodeId) {
+                            this.connections.push({
+                                fromNode: this.connectionStart.node,
+                                toNode: toNodeId,
+                                fromSide: this.connectionStart.side,
+                                toSide: toSide
+                            });
+                            this.render();
+                            this.pushToHistory();
+                        }
+                    }
+                    
+                    this.connecting = false;
+                    this.connectionStart = null;
+                    document.removeEventListener('mousemove', onMouseMove);
+                    document.removeEventListener('mouseup', onMouseUp);
+                };
+                
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+            }
+
+            handleCanvasMouseDown(e) {
+                if (e.target === e.currentTarget) {
+                    this.selectedNode = null;
+                    this.render();
+                    this.updatePropertiesPanel();
+                }
+            }
+
+            handleCanvasClick(e) {
+                // Para limpiar selección si es necesario
+            }
+
+            updatePropertiesPanel() {
+                if (this.selectedNode) {
+                    document.getElementById('propertiesContent').style.display = 'block';
+                    document.getElementById('noSelectionMessage').style.display = 'none';
+                    
+                    document.getElementById('nodeText').value = this.selectedNode.text || '';
+                    document.getElementById('nodeId').value = this.selectedNode.id || '';
+                    document.getElementById('nodeType').value = this.selectedNode.type || 'default';
+                    document.getElementById('nodeColor').value = this.selectedNode.color || '#0d6efd';
+                    document.getElementById('nodeDescription').value = this.selectedNode.description || '';
+                } else {
+                    document.getElementById('propertiesContent').style.display = 'none';
+                    document.getElementById('noSelectionMessage').style.display = 'block';
+                }
+            }
+
+            applyProperties() {
+                if (!this.selectedNode) return;
+                
+                this.selectedNode.text = document.getElementById('nodeText').value;
+                this.selectedNode.id = document.getElementById('nodeId').value;
+                this.selectedNode.type = document.getElementById('nodeType').value;
+                this.selectedNode.color = document.getElementById('nodeColor').value;
+                this.selectedNode.description = document.getElementById('nodeDescription').value;
+                
+                this.render();
+                this.pushToHistory();
+            }
+
+            deleteSelected() {
+                if (!this.selectedNode) return;
+                
+                // Eliminar conexiones relacionadas
+                this.connections = this.connections.filter(conn => 
+                    conn.fromNode !== this.selectedNode.id && conn.toNode !== this.selectedNode.id
+                );
+                
+                // Eliminar nodo
+                this.nodes = this.nodes.filter(node => node.id !== this.selectedNode.id);
+                this.selectedNode = null;
+                
+                this.render();
+                this.pushToHistory();
+            }
+
+            updateLayersList() {
+                const layersList = document.getElementById('layersList');
+                layersList.innerHTML = '';
+                
+                this.nodes.forEach((node, index) => {
+                    const layerEl = document.createElement('div');
+                    layerEl.className = 'p-2 border-bottom border-dark-gray d-flex align-items-center';
+                    layerEl.innerHTML = `
+                        <i class="bi bi-circle-fill me-2" style="color: ${node.color}; font-size: 10px;"></i>
+                        <span class="small text-light flex-grow-1">${node.text} (${node.id})</span>
+                        <button class="btn btn-sm btn-outline-danger py-0 px-1" onclick="editor.selectNodeById('${node.id}')">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    `;
+                    layersList.appendChild(layerEl);
+                });
+            }
+
+            selectNodeById(id) {
+                const node = this.nodes.find(n => n.id === id);
+                if (node) {
+                    this.selectNode(node);
+                }
+            }
+
+            // Historial (Undo/Redo)
+            pushToHistory() {
+                const state = {
+                    nodes: this.nodes,
+                    connections: this.connections
+                };
+                this.history.push(state);
+            }
+
+            undo() {
+                const state = this.history.undo();
+                if (state) {
+                    this.nodes = state.nodes;
+                    this.connections = state.connections;
+                    this.selectedNode = null;
+                    this.render();
+                }
+            }
+
+            redo() {
+                const state = this.history.redo();
+                if (state) {
+                    this.nodes = state.nodes;
+                    this.connections = state.connections;
+                    this.selectedNode = null;
+                    this.render();
+                }
+            }
+
+            // Nuevo diagrama
+            newDiagram() {
+                if (confirm('¿Crear nuevo diagrama? Se perderán los cambios no guardados.')) {
+                    this.nodes = [];
+                    this.connections = [];
+                    this.selectedNode = null;
+                    this.nodeIdCounter = 1;
+                    this.history.clear();
+                    this.render();
+                    this.pushToHistory();
+                    
+                    // Crear nodo de ejemplo
+                    this.createNode(300, 200, 'Inicio', 'start', 'start');
+                }
+            }
+
+            // Guardar diagrama
+            saveDiagram() {
+                const data = {
+                    nodes: this.nodes,
+                    connections: this.connections,
+                    diagramType: this.diagramType,
+                    version: '1.0'
+                };
+                
+                const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'diagrama.json';
+                a.click();
+                URL.revokeObjectURL(url);
+            }
+
+            // Cargar diagrama
+            loadDiagram() {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = '.json';
+                
+                input.onchange = (e) => {
+                    const file = e.target.files[0];
+                    const reader = new FileReader();
+                    
+                    reader.onload = (e) => {
+                        try {
+                            const data = JSON.parse(e.target.result);
+                            this.nodes = data.nodes || [];
+                            this.connections = data.connections || [];
+                            this.diagramType = data.diagramType || 'flowchart';
+                            
+                            document.getElementById('diagramTypeSelect').value = this.diagramType;
+                            this.loadShapesForType(this.diagramType);
+                            this.render();
+                            this.pushToHistory();
+                        } catch (error) {
+                            alert('Error al cargar el archivo');
+                        }
+                    };
+                    
+                    reader.readAsText(file);
+                };
+                
+                input.click();
+            }
+
+            // Exportar como imagen (simulado)
+            exportDiagram() {
+                alert('En una implementación completa, esto exportaría el diagrama como imagen.\n\nPara implementación real, se usaría html2canvas o similar.');
+            }
+        }
+
+        // Inicializar el editor
+        const editor = new DiagramEditor();
+        window.editor = editor; // Para acceso desde la consola
+
+        // Inicializar tooltips de Bootstrap
+        document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+            new bootstrap.Tooltip(el);
+        });
+
+        // Mostrar modal de ayuda al inicio (opcional)
+        setTimeout(() => {
+            const helpModal = new bootstrap.Modal(document.getElementById('helpModal'));
+            // helpModal.show(); // Descomentar si quieres que se muestre al inicio
+        }, 1000);
+    </script>
+</body>
+</html>

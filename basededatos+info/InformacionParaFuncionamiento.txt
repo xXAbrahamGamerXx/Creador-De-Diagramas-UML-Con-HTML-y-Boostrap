@@ -1,0 +1,1 @@
+El generar_SVG.php al ejecutarlo en la carpeta raíz donde esta el dashboard en esta estrecutura ctual enera en automatico todos los dibujos para cada diagrama genera cada imagen y el editor.php utiliza dichos imágenes para representar las figuras de los diagramas 

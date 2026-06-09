@@ -1,0 +1,19 @@
+Usuarios de prueba:
+Usuario 1 - Administrador
+Usuario: admin
+Contraseña: password
+Email: admin@ejemplo.com
+Nombre: Administrador
+
+
+Usuario 2 - Usuario Demo
+Usuario: alumno1
+Contraseña: password
+Email: alumno1@ejemplo.com
+Nombre: Usuario Demo
+
+Usuario 2 - Usuario Demo
+Usuario: maestro1
+Contraseña: password{
+Email: alumno1@ejemplo.com
+Nombre: Usuario Demo
