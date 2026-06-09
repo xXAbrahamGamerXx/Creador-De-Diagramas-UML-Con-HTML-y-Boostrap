@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <rect x="4" y="4" width="40" height="40" rx="2" stroke="#993556" stroke-width="1.5" fill="#FBEAF0"/>
+  <rect x="4" y="4" width="40" height="12" rx="2" stroke="#993556" stroke-width="1.5" fill="#D4537E" fill-opacity=".3"/>
+  <text x="24" y="11.5" font-size="5.5" fill="#993556" font-family="system-ui" font-weight="700" text-anchor="middle">«profile»</text>
+  <rect x="10" y="20" width="28" height="8" rx="2" stroke="#993556" stroke-width="1.2" fill="#F4C0D1" fill-opacity=".5"/>
+  <text x="24" y="25.5" font-size="5" fill="#993556" font-family="system-ui" text-anchor="middle">«stereotype» Entidad</text>
+  <rect x="10" y="31" width="28" height="8" rx="2" stroke="#993556" stroke-width="1" fill="none" stroke-dasharray="2,1.5"/>
+  <text x="24" y="36.5" font-size="5" fill="#993556" font-family="system-ui" text-anchor="middle">{restricción OCL}</text>
+</svg>

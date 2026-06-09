@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <rect x="4" y="4" width="40" height="40" rx="2" stroke="#185FA5" stroke-width="1.5" fill="#E6F1FB"/>
+  <rect x="4" y="4" width="40" height="12" rx="2" stroke="#185FA5" stroke-width="1.5" fill="#378ADD"/>
+  <line x1="4" y1="26" x2="44" y2="26" stroke="#185FA5" stroke-width="1.2"/>
+  <text x="24" y="12" font-size="6" fill="#fff" font-family="system-ui" font-weight="700" text-anchor="middle">NombreClase</text>
+  <text x="8" y="22" font-size="5" fill="#185FA5" font-family="system-ui">+ nombre: String</text>
+  <text x="8" y="32" font-size="5" fill="#185FA5" font-family="system-ui">+ getId(): int</text>
+  <text x="8" y="39" font-size="5" fill="#185FA5" font-family="system-ui">- calcular()</text>
+</svg>

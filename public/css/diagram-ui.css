@@ -1,0 +1,222 @@
+/**
+ * diagram-ui.css — V46
+ * Sistema visual compartido: cards Lucidchart, previews UML, picker de tipos.
+ */
+
+/* ── SVG Icons — visibles en ambos temas ─────────────────────────── */
+body:not(.light-theme) .lc-preview img,
+body:not(.light-theme) .m-lc-preview img,
+body:not(.light-theme) .lc-preview-admin img { filter: brightness(0.92) saturate(1.1); }
+
+body.light-theme .lc-preview img,
+body.light-theme .m-lc-preview img,
+body.light-theme .lc-preview-admin img { filter: none; }
+
+._dcTipoOpt img, ._mTipoOpt img, ._ndpMOpt img, ._ndpOpt img { filter: none !important; opacity: 1 !important; }
+
+/* ── Código copiable ─────────────────────────────────────────────── */
+.copy-code-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(102,126,234,.12); border: 1.5px solid rgba(102,126,234,.3);
+    color: var(--primary,#667eea); font-family: 'Courier New',monospace;
+    font-size: .82rem; font-weight: 700; letter-spacing: .1em;
+    padding: 5px 12px; border-radius: 8px; cursor: pointer;
+    user-select: text; -webkit-user-select: text; transition: all .15s;
+}
+.copy-code-badge:hover { background: rgba(102,126,234,.2); }
+.copy-invite-btn {
+    background: linear-gradient(135deg,var(--primary,#667eea),var(--primary2,#764ba2));
+    border: none; color: #fff; border-radius: 8px; padding: 6px 14px;
+    font-size: .76rem; font-weight: 600; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 5px; transition: opacity .15s;
+}
+.copy-invite-btn:hover { opacity: .88; }
+
+/* ── Búsqueda de usuarios para invitar ───────────────────────────── */
+.invite-search-wrap { position: relative; }
+.invite-search-wrap input {
+    width: 100%; padding: 8px 12px 8px 34px;
+    border: 1.5px solid var(--bd-color,#2a2a4a); border-radius: 9px;
+    background: var(--bg-deep,#0d0d1a); color: var(--txt-main,#e0e0e0);
+    font-size: .84rem; outline: none; transition: border-color .18s;
+}
+.invite-search-wrap input:focus { border-color: var(--primary,#667eea); }
+.invite-search-wrap .si { position:absolute; left:10px; top:50%; transform:translateY(-50%); color:var(--txt-muted,#888); font-size:.82rem; pointer-events:none; }
+.invite-results {
+    position: absolute; top: calc(100% + 4px); left:0; right:0;
+    background: var(--bg-card,#1a1a2e); border: 1.5px solid var(--bd-color,#2a2a4a);
+    border-radius: 10px; box-shadow: 0 8px 28px rgba(0,0,0,.28);
+    z-index: 999; max-height: 240px; overflow-y: auto;
+}
+.invite-result-item {
+    display: flex; align-items: center; gap: 10px; padding: 9px 12px;
+    cursor: pointer; transition: background .13s;
+    border-bottom: 1px solid var(--bd-color,#2a2a4a);
+}
+.invite-result-item:last-child { border-bottom: none; }
+.invite-result-item:hover { background: var(--bg-hover,rgba(102,126,234,.1)); }
+.invite-result-avatar {
+    width:30px; height:30px; border-radius:50%;
+    background: linear-gradient(135deg,var(--primary,#667eea),var(--primary2,#764ba2));
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size:.74rem; color:#fff; flex-shrink:0;
+}
+.invite-result-name { font-size:.82rem; font-weight:600; color:var(--txt-main,#e0e0e0); }
+.invite-result-sub  { font-size:.68rem; color:var(--txt-muted,#888); }
+
+/* ── Badges de permiso ────────────────────────────────────────────── */
+.perm-badge { font-size:.62rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; padding:2px 7px; border-radius:5px; display:inline-block; }
+.perm-owner   { background:rgba(102,126,234,.18); color:var(--primary,#667eea); }
+.perm-editor  { background:rgba(16,185,129,.12);  color:#10b981; }
+.perm-viewer  { background:rgba(107,114,128,.12); color:#9ca3af; }
+.perm-adminp  { background:rgba(245,158,11,.12);  color:#f59e0b; }
+
+/* ── Light theme overrides ────────────────────────────────────────── */
+body.light-theme code { background:rgba(102,126,234,.08)!important; color:#4c5ddb!important; }
+body.light-theme .copy-code-badge { background:rgba(102,126,234,.1); border-color:rgba(102,126,234,.35); color:#4c5ddb; }
+body.light-theme .invite-search-wrap input { background:#fff; border-color:#dde0f0; color:#1e1e2e; }
+body.light-theme .invite-results { background:#fff; border-color:#dde0f0; box-shadow:0 8px 28px rgba(0,0,0,.1); }
+body.light-theme .invite-result-item { border-color:#eef0ff; }
+body.light-theme .invite-result-item:hover { background:#eef0ff; }
+body.light-theme .invite-result-name { color:#1e1e2e; }
+body.light-theme .invite-result-sub  { color:#666; }
+
+/* ── SVG Icon visibility fix — ambos temas ─────────────────────────── */
+/* Dark mode: preview bg es oscuro, SVGs con fill pastel contrastan bien */
+body:not(.light-theme) .lc-preview > div,
+body:not(.light-theme) .m-lc-preview > div,
+body:not(.light-theme) .lc-preview-admin > div { opacity: 0.55; }
+
+/* Light mode: preview bg claro, SVGs pasteles pueden desaparecer
+   → darles fondo neutro diferenciado */
+body.light-theme .lc-preview,
+body.light-theme .m-lc-preview,
+body.light-theme .lc-preview-admin {
+    background: #f0f2f8 !important;
+}
+body.light-theme .lc-preview > div,
+body.light-theme .m-lc-preview > div,
+body.light-theme .lc-preview-admin > div { opacity: 0.7; }
+
+/* El picker de tipos siempre muestra los iconos al 100% */
+._dcTipoOpt img, ._mTipoOpt img, ._ndpMOpt img, ._ndpOpt img,
+._dcTipoOpt > div, ._mTipoOpt > div, ._ndpMOpt > div {
+    opacity: 1 !important;
+    filter: none !important;
+}
+
+/* Light theme: picker background más visible */
+body.light-theme ._dcTipoOpt,
+body.light-theme ._mTipoOpt,
+body.light-theme ._ndpMOpt {
+    background: #fff !important;
+    border-color: #dde0f0 !important;
+}
+body.light-theme ._dcTipoOpt[style*="rgba(var(--primary-rgb)"] {
+    background: rgba(102,126,234,.12) !important;
+    border-color: var(--primary) !important;
+}
+
+/* ── Global light theme text contrast fix ───────────────────────────── */
+body.light-theme {
+    --txt-main:   #1e1e2e;
+    --txt-muted:  #5a5f7d;
+    --bg-card:    #ffffff;
+    --bg-deep:    #f4f5fb;
+    --bg-hover:   #eef0ff;
+    --bd-color:   #dde0f0;
+}
+
+/* Cards modernas en light theme */
+body.light-theme .diagram-card,
+body.light-theme .lc-card-admin {
+    background: #fff;
+    border-color: #dde0f0;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+body.light-theme .lc-title,
+body.light-theme .lc-title-admin { color: #1e1e2e !important; }
+body.light-theme .lc-meta,
+body.light-theme .lc-meta-admin  { color: #5a5f7d !important; }
+body.light-theme .lc-footer,
+body.light-theme .lc-footer-admin { border-color: #dde0f0; }
+body.light-theme .lc-body,
+body.light-theme .lc-body-admin   { background: #fff; }
+
+/* Sidebar / nav en light theme */
+body.light-theme .sidebar { background: #fff; border-right: 1px solid #dde0f0; }
+body.light-theme .nav-item a,
+body.light-theme .nav-link { color: #4a4f6e !important; }
+body.light-theme .nav-item.active a,
+body.light-theme .nav-link.active { color: var(--primary) !important; }
+body.light-theme .sidebar-user { color: #1e1e2e; }
+body.light-theme .sidebar-user small { color: #5a5f7d; }
+
+/* Modales en light theme */
+body.light-theme .modal-content { background: #fff !important; color: #1e1e2e !important; }
+body.light-theme .modal-header { border-color: #dde0f0 !important; }
+body.light-theme .modal-footer { border-color: #dde0f0 !important; }
+body.light-theme .modal-title  { color: #1e1e2e !important; }
+body.light-theme .form-label   { color: #1e1e2e !important; }
+body.light-theme .form-control,
+body.light-theme .form-select,
+body.light-theme textarea {
+    background: #fff !important;
+    color: #1e1e2e !important;
+    border-color: #dde0f0 !important;
+}
+body.light-theme .form-control::placeholder,
+body.light-theme textarea::placeholder { color: #9ca3af !important; }
+
+/* Inputs y selects en light theme (clases custom) */
+body.light-theme .form-control-dark {
+    background: #fff !important;
+    color: #1e1e2e !important;
+    border-color: #dde0f0 !important;
+}
+
+/* Stats y headings */
+body.light-theme .stat-card { background: #fff; border-color: #dde0f0; }
+body.light-theme .stat-label { color: #5a5f7d !important; }
+body.light-theme h1,body.light-theme h2,body.light-theme h3,
+body.light-theme h4,body.light-theme h5,body.light-theme h6 { color: #1e1e2e !important; }
+body.light-theme p { color: #3a3f5c; }
+body.light-theme .text-muted { color: #5a5f7d !important; }
+body.light-theme .text-light { color: #1e1e2e !important; }
+
+/* Sección cards y headers en admin light theme */
+body.light-theme .section-card { background: #fff !important; border-color: #dde0f0 !important; }
+body.light-theme .card-header  { background: #f0f2ff !important; border-color: #dde0f0 !important; color: #1e1e2e !important; }
+body.light-theme .card-body    { background: #fff; color: #1e1e2e; }
+
+/* Admin table en light theme */
+body.light-theme .admin-table { background: #fff !important; }
+body.light-theme .admin-table td { color: #1e1e2e !important; border-color: #eef0ff !important; }
+body.light-theme .admin-table th { color: var(--primary) !important; background: #eef0ff !important; }
+
+/* Empty state */
+body.light-theme .empty-state { color: #5a5f7d !important; }
+body.light-theme .empty-state i { color: #c0c5e0 !important; }
+
+/* Toast en light theme */
+body.light-theme .toast-msg.success { background: #d1fae5; color: #065f46; }
+body.light-theme .toast-msg.error   { background: #fee2e2; color: #991b1b; }
+body.light-theme .toast-msg.info    { background: #dbeafe; color: #1e40af; }
+
+/* Botones outline en light theme */
+body.light-theme .btn-admin-outline {
+    border-color: #c8cde8 !important;
+    color: #4a4f6e !important;
+    background: #fff !important;
+}
+body.light-theme .btn-admin-outline:hover { background: #eef0ff !important; color: var(--primary) !important; }
+
+/* Observaciones en light theme */
+body.light-theme .obs-body { background: #f4f5fb; border-color: #dde0f0; }
+body.light-theme .obs-bubble.reply .obs-body { background: rgba(102,126,234,.07); }
+body.light-theme .obs-text { color: #1e1e2e !important; }
+body.light-theme .obs-meta { color: #5a5f7d !important; }
+
+/* Folder explorer en light theme */
+body.light-theme .folder-header { background: rgba(102,126,234,.07); border-color: #dde0f0; }
+body.light-theme .folder-body   { background: #fff; border-color: #dde0f0; }

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <rect x="4" y="15" width="40" height="28" rx="2" stroke="#534AB7" stroke-width="1.5" fill="#EEEDFE"/>
+  <path d="M4,17 L4,11 Q4,9 6,9 L20,9 Q22,9 22,11 L22,15" stroke="#534AB7" stroke-width="1.5" fill="#AFA9EC"/>
+  <rect x="4" y="9" width="18" height="6" rx="2" stroke="#534AB7" stroke-width="1.5" fill="#AFA9EC"/>
+  <rect x="10" y="22" width="12" height="9" rx="1" stroke="#534AB7" stroke-width="1.2" fill="#fff" fill-opacity=".5"/>
+  <rect x="26" y="22" width="12" height="9" rx="1" stroke="#534AB7" stroke-width="1.2" fill="#fff" fill-opacity=".5"/>
+  <line x1="22" y1="26.5" x2="26" y2="26.5" stroke="#534AB7" stroke-width="1" stroke-dasharray="2,1.5"/>
+  <text x="16" y="27.5" font-size="4" fill="#534AB7" font-family="system-ui" text-anchor="middle">Clase</text>
+  <text x="32" y="27.5" font-size="4" fill="#534AB7" font-family="system-ui" text-anchor="middle">Clase</text>
+  <text x="24" y="39" font-size="5" fill="#534AB7" font-family="system-ui" text-anchor="middle" font-weight="600">«package»</text>
+</svg>

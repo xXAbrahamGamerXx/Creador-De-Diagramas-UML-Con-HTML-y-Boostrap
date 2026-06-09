@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <rect x="4" y="8" width="40" height="32" rx="2" stroke="#0F6E56" stroke-width="1.5" fill="#E1F5EE"/>
+  <rect x="4" y="8" width="40" height="11" rx="2" stroke="#0F6E56" stroke-width="1.5" fill="#1D9E75" fill-opacity=".25"/>
+  <line x1="4" y1="19" x2="44" y2="19" stroke="#0F6E56" stroke-width="1.2"/>
+  <text x="24" y="15.5" font-size="6" fill="#0F6E56" font-family="system-ui" font-weight="700" text-anchor="middle" text-decoration="underline">obj:Clase</text>
+  <text x="8" y="26" font-size="5" fill="#0F6E56" font-family="system-ui">nombre = "Juan"</text>
+  <text x="8" y="33" font-size="5" fill="#0F6E56" font-family="system-ui">edad = 25</text>
+  <text x="8" y="37.5" font-size="4.5" fill="#0F6E56" font-family="system-ui" opacity=".6">activo = true</text>
+</svg>

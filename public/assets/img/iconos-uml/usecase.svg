@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <rect x="1" y="1" width="46" height="46" rx="3" stroke="#185FA5" stroke-width="1" stroke-dasharray="3,2" fill="none" opacity=".4"/>
+  <circle cx="9" cy="14" r="4.5" stroke="#185FA5" stroke-width="1.5" fill="#E6F1FB"/>
+  <line x1="9" y1="18.5" x2="9" y2="29" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="5" y1="22" x2="13" y2="22" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="9" y1="29" x2="6" y2="36" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="9" y1="29" x2="12" y2="36" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/>
+  <ellipse cx="31" cy="17" rx="13" ry="8" stroke="#185FA5" stroke-width="1.5" fill="#E6F1FB"/>
+  <ellipse cx="31" cy="34" rx="13" ry="8" stroke="#185FA5" stroke-width="1.5" fill="#E6F1FB"/>
+  <text x="31" y="18.5" font-size="5.5" fill="#185FA5" font-family="system-ui" font-weight="600" text-anchor="middle">iniciar sesión</text>
+  <text x="31" y="35.5" font-size="5.5" fill="#185FA5" font-family="system-ui" font-weight="600" text-anchor="middle">ver reportes</text>
+  <line x1="18" y1="17" x2="18.5" y2="17" stroke="#185FA5" stroke-width="1.2" marker-end="url(#a)"/>
+  <defs><marker id="a" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0 0L5 2.5L0 5" fill="none" stroke="#185FA5" stroke-width="1.2"/></marker></defs>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <rect x="3" y="3" width="13" height="8" rx="2" stroke="#D85A30" stroke-width="1.5" fill="#FAECE7"/>
+  <rect x="32" y="3" width="13" height="8" rx="2" stroke="#D85A30" stroke-width="1.5" fill="#FAECE7"/>
+  <text x="9.5" y="8.5" font-size="5" fill="#D85A30" font-family="system-ui" font-weight="600" text-anchor="middle">:A</text>
+  <text x="38.5" y="8.5" font-size="5" fill="#D85A30" font-family="system-ui" font-weight="600" text-anchor="middle">:B</text>
+  <line x1="9.5" y1="11" x2="9.5" y2="45" stroke="#D85A30" stroke-width="1" stroke-dasharray="2.5,2"/>
+  <line x1="38.5" y1="11" x2="38.5" y2="45" stroke="#D85A30" stroke-width="1" stroke-dasharray="2.5,2"/>
+  <rect x="7" y="16" width="5" height="18" rx="1" fill="#FAECE7" stroke="#D85A30" stroke-width="1.2"/>
+  <rect x="36.5" y="22" width="5" height="18" rx="1" fill="#FAECE7" stroke="#D85A30" stroke-width="1.2"/>
+  <line x1="12" y1="19" x2="36.5" y2="19" stroke="#D85A30" stroke-width="1.3" marker-end="url(#sa)"/>
+  <line x1="36.5" y1="30" x2="12" y2="30" stroke="#D85A30" stroke-width="1.1" stroke-dasharray="2.5,2" marker-end="url(#sb)"/>
+  <text x="24" y="17" font-size="4.5" fill="#D85A30" font-family="system-ui" text-anchor="middle">request()</text>
+  <text x="24" y="28" font-size="4.5" fill="#D85A30" font-family="system-ui" text-anchor="middle">response</text>
+  <defs>
+    <marker id="sa" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="none" stroke="#D85A30" stroke-width="1.2"/></marker>
+    <marker id="sb" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="none" stroke="#D85A30" stroke-width="1.2"/></marker>
+  </defs>
+</svg>

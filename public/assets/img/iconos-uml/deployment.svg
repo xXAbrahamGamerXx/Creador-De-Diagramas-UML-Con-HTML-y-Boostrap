@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <rect x="6" y="14" width="36" height="28" rx="2" stroke="#854F0B" stroke-width="1.5" fill="#FAEEDA"/>
+  <path d="M6,14 Q24,6 42,14" stroke="#854F0B" stroke-width="1.5" fill="#FAC775" stroke-linejoin="round"/>
+  <ellipse cx="24" cy="14" rx="18" ry="5" fill="#FAC775" stroke="#854F0B" stroke-width="1.5"/>
+  <rect x="13" y="22" width="22" height="13" rx="1.5" stroke="#854F0B" stroke-width="1.2" fill="#fff" fill-opacity=".6"/>
+  <text x="24" y="26" font-size="4.5" fill="#854F0B" font-family="system-ui" text-anchor="middle" font-weight="600">«artifact»</text>
+  <text x="24" y="31.5" font-size="4" fill="#854F0B" font-family="system-ui" text-anchor="middle">app.jar</text>
+  <text x="24" y="10.5" font-size="5" fill="#854F0B" font-family="system-ui" text-anchor="middle" font-weight="700">Servidor</text>
+</svg>
