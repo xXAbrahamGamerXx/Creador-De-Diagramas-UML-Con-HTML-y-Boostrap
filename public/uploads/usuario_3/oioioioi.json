@@ -1,0 +1,70 @@
+{
+    "diagrama_id": 4,
+    "titulo": "oioioioi",
+    "fecha_guardado": "2026-05-20 23:38:53",
+    "version_app": "4.0",
+    "contenido": {
+        "nodes": [
+            {
+                "id": "system_1",
+                "x": 310,
+                "y": 186,
+                "text": "Sistema",
+                "type": "system",
+                "width": 400,
+                "height": 300,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "usecase_2",
+                "x": 435,
+                "y": 231,
+                "text": "Caso de Uso",
+                "type": "usecase",
+                "width": 150,
+                "height": 60,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "actor_3",
+                "x": 180,
+                "y": 226,
+                "text": "Actor",
+                "type": "actor",
+                "width": 80,
+                "height": 120,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "usecase_4",
+                "x": 435,
+                "y": 305,
+                "text": "Caso de Uso",
+                "type": "usecase",
+                "width": 150,
+                "height": 60,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            }
+        ],
+        "connections": [
+            {
+                "fromNode": "actor_3",
+                "toNode": "usecase_2",
+                "fromSide": "edge-right-edge-0.458",
+                "toSide": "edge-left-edge-0.532",
+                "type": "asociacion",
+                "label": "",
+                "lineStyle": "bezier"
+            }
+        ],
+        "diagramType": "usecase"
+    }
+}

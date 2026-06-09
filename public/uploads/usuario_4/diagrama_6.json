@@ -1,0 +1,96 @@
+{
+    "diagrama_id": 6,
+    "titulo": "prueba2",
+    "fecha_guardado": "2026-03-27 20:59:21",
+    "version_app": "4.0",
+    "contenido": {
+        "nodes": [
+            {
+                "id": "system_1",
+                "x": 308,
+                "y": 225,
+                "text": "Sistema",
+                "type": "system",
+                "width": 400,
+                "height": 441,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "actor_2",
+                "x": 178,
+                "y": 265,
+                "text": "Actor",
+                "type": "actor",
+                "width": 80,
+                "height": 120,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "usecase_3",
+                "x": 433,
+                "y": 270,
+                "text": "Caso de Uso",
+                "type": "usecase",
+                "width": 150,
+                "height": 60,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "usecase_4",
+                "x": 341,
+                "y": 326,
+                "text": "Caso de Uso",
+                "type": "usecase",
+                "width": 150,
+                "height": 60,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "usecase_5",
+                "x": 433,
+                "y": 418,
+                "text": "Caso de Uso",
+                "type": "usecase",
+                "width": 150,
+                "height": 60,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "usecase_6",
+                "x": 433,
+                "y": 492,
+                "text": "Caso de Uso",
+                "type": "usecase",
+                "width": 150,
+                "height": 60,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "usecase_7",
+                "x": 433,
+                "y": 566,
+                "text": "Caso de Uso",
+                "type": "usecase",
+                "width": 150,
+                "height": 60,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            }
+        ],
+        "connections": [],
+        "diagramType": "usecase"
+    }
+}

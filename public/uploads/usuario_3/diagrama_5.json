@@ -1,0 +1,36 @@
+{
+    "diagrama_id": 5,
+    "titulo": "vbnm",
+    "fecha_guardado": "2026-03-24 21:52:17",
+    "version_app": "4.0",
+    "contenido": {
+        "nodes": [
+            {
+                "id": "node_1",
+                "x": 243,
+                "y": 187,
+                "text": "Nodo",
+                "type": "node",
+                "width": 150,
+                "height": 100,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "device_2",
+                "x": 322,
+                "y": 256,
+                "text": "Dispositivo",
+                "type": "device",
+                "width": 150,
+                "height": 120,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            }
+        ],
+        "connections": [],
+        "diagramType": "deployment"
+    }
+}

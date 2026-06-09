@@ -1,0 +1,89 @@
+{
+    "diagrama_id": 8,
+    "titulo": "DiagramaDeClases",
+    "fecha_guardado": "2026-04-17 21:53:17",
+    "version_app": "4.0",
+    "contenido": {
+        "nodes": [
+            {
+                "id": "class_1",
+                "x": 506.46153846153834,
+                "y": -34.923076923076906,
+                "text": "Clase",
+                "type": "class",
+                "width": 180,
+                "height": 184,
+                "color": "#0d6efd",
+                "attributes": "hora\nfecha \ndia \nminuto\nsegundo",
+                "methods": "",
+                "label": ""
+            },
+            {
+                "id": "interface_2",
+                "x": -115.30769230769215,
+                "y": -153.76923076923072,
+                "text": "Interfaz",
+                "type": "interface",
+                "width": 180,
+                "height": 184,
+                "color": "#0d6efd",
+                "attributes": "hora\nfecha \ndia \nminuto\nsegundo",
+                "methods": "",
+                "label": ""
+            },
+            {
+                "id": "enum_3",
+                "x": -74.46153846153845,
+                "y": 447.84615384615404,
+                "text": "Enumeración",
+                "type": "enum",
+                "width": 160,
+                "height": 184,
+                "color": "#0d6efd",
+                "attributes": "hora\nfecha \ndia \nminuto\nsegundo",
+                "methods": "",
+                "label": ""
+            },
+            {
+                "id": "abstract_4",
+                "x": 355,
+                "y": 446,
+                "text": "Clase Abstracta",
+                "type": "abstract",
+                "width": 180,
+                "height": 284,
+                "color": "#0d6efd",
+                "attributes": "hora\nfecha \ndia \nminuto\nsegundo",
+                "methods": "hora\nfecha \ndia \nminuto\nsegundo",
+                "label": ""
+            }
+        ],
+        "connections": [
+            {
+                "fromNode": "class_1",
+                "toNode": "abstract_4",
+                "fromSide": "edge-right-edge-0.499",
+                "toSide": "edge-right-edge-0.486",
+                "type": "asociacion",
+                "label": ""
+            },
+            {
+                "fromNode": "interface_2",
+                "toNode": "enum_3",
+                "fromSide": "edge-left-edge-0.376",
+                "toSide": "edge-left-edge-0.506",
+                "type": "asociacion",
+                "label": ""
+            },
+            {
+                "fromNode": "interface_2",
+                "toNode": "class_1",
+                "fromSide": "edge-top-edge-0.556",
+                "toSide": "edge-top-edge-0.489",
+                "type": "asociacion",
+                "label": ""
+            }
+        ],
+        "diagramType": "class"
+    }
+}

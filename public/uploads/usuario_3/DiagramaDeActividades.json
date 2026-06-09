@@ -1,0 +1,47 @@
+{
+    "diagrama_id": 9,
+    "titulo": "DiagramaDeActividades",
+    "fecha_guardado": "2026-04-18 02:11:27",
+    "version_app": "4.0",
+    "contenido": {
+        "nodes": [
+            {
+                "id": "decision_1",
+                "x": 414,
+                "y": 229,
+                "text": "Decisión",
+                "type": "decision",
+                "width": 100,
+                "height": 70,
+                "color": "#fd7e14",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "activity_2",
+                "x": 269,
+                "y": 75,
+                "text": "Actividad",
+                "type": "activity",
+                "width": 140,
+                "height": 70,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            }
+        ],
+        "connections": [
+            {
+                "fromNode": "decision_1",
+                "toNode": "decision_1",
+                "fromSide": "edge-top-edge-0.740",
+                "toSide": "edge-right-edge-0.457",
+                "type": "flujo",
+                "label": "hola",
+                "labelOffsetX": 0,
+                "labelOffsetY": 0
+            }
+        ],
+        "diagramType": "activity"
+    }
+}

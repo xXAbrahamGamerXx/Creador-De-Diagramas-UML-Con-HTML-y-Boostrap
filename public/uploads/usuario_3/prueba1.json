@@ -1,0 +1,48 @@
+{
+    "diagrama_id": 1,
+    "titulo": "prueba1",
+    "fecha_guardado": "2026-05-20 22:20:36",
+    "version_app": "4.0",
+    "contenido": {
+        "nodes": [
+            {
+                "id": "system_1",
+                "x": 252,
+                "y": 236,
+                "text": "Sistema",
+                "type": "system",
+                "width": 400,
+                "height": 300,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "actor_2",
+                "x": 122,
+                "y": 276,
+                "text": "Actor",
+                "type": "actor",
+                "width": 80,
+                "height": 120,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "usecase_3",
+                "x": 377,
+                "y": 281,
+                "text": "Caso de Uso",
+                "type": "usecase",
+                "width": 150,
+                "height": 60,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            }
+        ],
+        "connections": [],
+        "diagramType": "usecase"
+    }
+}

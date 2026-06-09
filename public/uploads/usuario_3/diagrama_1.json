@@ -1,0 +1,72 @@
+{
+    "diagrama_id": 1,
+    "titulo": "\n                \n                \n                \n                \n                \n                ghjk                                                                        ",
+    "fecha_guardado": "2026-03-27 20:47:24",
+    "version_app": "4.0",
+    "contenido": {
+        "nodes": [
+            {
+                "id": "system_1",
+                "x": 264,
+                "y": 223,
+                "text": "Sistema",
+                "type": "system",
+                "width": 471,
+                "height": 367,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "usecase_2",
+                "x": 573,
+                "y": 263,
+                "text": "Caso de Uso",
+                "type": "usecase",
+                "width": 150,
+                "height": 60,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "usecase_3",
+                "x": 444,
+                "y": 424,
+                "text": "Caso de Uso",
+                "type": "usecase",
+                "width": 150,
+                "height": 60,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "usecase_4",
+                "x": 405,
+                "y": 333,
+                "text": "Caso de Uso",
+                "type": "usecase",
+                "width": 150,
+                "height": 60,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "usecase_5",
+                "x": 389,
+                "y": 490,
+                "text": "Caso de Uso",
+                "type": "usecase",
+                "width": 150,
+                "height": 60,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            }
+        ],
+        "connections": [],
+        "diagramType": "usecase"
+    }
+}

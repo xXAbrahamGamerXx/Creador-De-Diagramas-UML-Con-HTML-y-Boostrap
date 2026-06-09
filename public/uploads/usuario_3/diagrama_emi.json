@@ -1,0 +1,60 @@
+{
+    "diagrama_id": 2,
+    "titulo": "diagrama emi",
+    "fecha_guardado": "2026-05-20 23:32:06",
+    "version_app": "4.0",
+    "contenido": {
+        "nodes": [
+            {
+                "id": "object_1",
+                "x": 187,
+                "y": 134,
+                "text": "Objeto",
+                "type": "object",
+                "width": 150,
+                "height": 80,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "message_2",
+                "x": 101,
+                "y": 260,
+                "text": "Mensaje 1",
+                "type": "message",
+                "width": 125,
+                "height": 46,
+                "color": "#0dfd69",
+                "attributes": "",
+                "methods": "",
+                "label": ""
+            },
+            {
+                "id": "link_3",
+                "x": 319,
+                "y": 262,
+                "text": "Enlace",
+                "type": "link",
+                "width": 80,
+                "height": 40,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": "",
+                "label": ""
+            }
+        ],
+        "connections": [
+            {
+                "fromNode": "link_3",
+                "toNode": "message_2",
+                "fromSide": "edge-left-edge-0.875",
+                "toSide": "edge-right-edge-0.725",
+                "type": "mensaje",
+                "label": "",
+                "lineStyle": "bezier"
+            }
+        ],
+        "diagramType": "communication"
+    }
+}

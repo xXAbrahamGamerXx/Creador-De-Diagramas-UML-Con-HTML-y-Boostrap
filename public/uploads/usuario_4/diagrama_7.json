@@ -1,0 +1,117 @@
+{
+    "diagrama_id": 7,
+    "titulo": "ghjk",
+    "fecha_guardado": "2026-03-27 21:00:46",
+    "version_app": "4.0",
+    "contenido": {
+        "nodes": [
+            {
+                "id": "actor_1",
+                "x": 40,
+                "y": 20,
+                "text": "Actor",
+                "type": "actor",
+                "width": 80,
+                "height": 120,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "lifeline_2",
+                "x": 240,
+                "y": 20,
+                "text": "Línea de Vida",
+                "type": "lifeline",
+                "width": 100,
+                "height": 500,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "lifeline_3",
+                "x": 369,
+                "y": 18,
+                "text": "Línea de Vida",
+                "type": "lifeline",
+                "width": 100,
+                "height": 500,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "lifeline_4",
+                "x": 504,
+                "y": 19,
+                "text": "Línea de Vida",
+                "type": "lifeline",
+                "width": 100,
+                "height": 500,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "activation_5",
+                "x": 280,
+                "y": 111,
+                "text": "Activación",
+                "type": "activation",
+                "width": 20,
+                "height": 239,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "activation_6",
+                "x": 409,
+                "y": 400,
+                "text": "Activación",
+                "type": "activation",
+                "width": 20,
+                "height": 80,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "activation_7",
+                "x": 409,
+                "y": 263,
+                "text": "Activación",
+                "type": "activation",
+                "width": 20,
+                "height": 80,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "activation_8",
+                "x": 409,
+                "y": 142,
+                "text": "Activación",
+                "type": "activation",
+                "width": 20,
+                "height": 80,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            }
+        ],
+        "connections": [
+            {
+                "fromNode": "actor_1",
+                "toNode": "activation_5",
+                "fromSide": "abs-88-left",
+                "toSide": "abs-160-left",
+                "type": "mensaje-sincrono",
+                "label": ""
+            }
+        ],
+        "diagramType": "sequence"
+    }
+}

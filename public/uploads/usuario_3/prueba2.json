@@ -1,0 +1,158 @@
+{
+    "diagrama_id": 5,
+    "titulo": "prueba2",
+    "fecha_guardado": "2026-04-18 02:29:49",
+    "version_app": "4.0",
+    "contenido": {
+        "nodes": [
+            {
+                "id": "system_1",
+                "x": 366.907514450867,
+                "y": 384.0173410404624,
+                "text": "Sistema",
+                "type": "system",
+                "width": 260,
+                "height": 470,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "arbol 2",
+                "x": 431.907514450867,
+                "y": 434.0173410404624,
+                "text": "hola",
+                "type": "usecase",
+                "width": 130,
+                "height": 50,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": "",
+                "label": ""
+            },
+            {
+                "id": "usecase_4",
+                "x": 431.907514450867,
+                "y": 504.0173410404624,
+                "text": "Caso de Uso",
+                "type": "usecase",
+                "width": 130,
+                "height": 50,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "usecase_5",
+                "x": 431.907514450867,
+                "y": 574.0173410404624,
+                "text": "Caso de Uso",
+                "type": "usecase",
+                "width": 130,
+                "height": 50,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "actor_1",
+                "x": 234.94322873658126,
+                "y": 442.67805532617666,
+                "text": "Actor",
+                "type": "actor",
+                "width": 80,
+                "height": 120,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "actor_2",
+                "x": 686.7289430222955,
+                "y": 438.7494838976053,
+                "text": "Actor",
+                "type": "actor",
+                "width": 80,
+                "height": 120,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "actor_3",
+                "x": 236.90751445086698,
+                "y": 564.0173410404624,
+                "text": "Actor",
+                "type": "actor",
+                "width": 80,
+                "height": 120,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "usecase_1",
+                "x": 431.907514450867,
+                "y": 644.0173410404624,
+                "text": "Caso de Uso",
+                "type": "usecase",
+                "width": 130,
+                "height": 50,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "usecase_2",
+                "x": 431.907514450867,
+                "y": 714.0173410404624,
+                "text": "Caso de Uso",
+                "type": "usecase",
+                "width": 130,
+                "height": 50,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "usecase_1",
+                "x": 431.907514450867,
+                "y": 784.0173410404624,
+                "text": "Caso de Uso",
+                "type": "usecase",
+                "width": 130,
+                "height": 50,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            }
+        ],
+        "connections": [
+            {
+                "fromNode": "actor_1",
+                "toNode": "arbol 2",
+                "fromSide": "edge-right-edge-0.345",
+                "toSide": "edge-left-edge-0.539",
+                "type": "asociacion",
+                "label": ""
+            },
+            {
+                "fromNode": "actor_2",
+                "toNode": "arbol 2",
+                "fromSide": "edge-left-edge-0.378",
+                "toSide": "edge-right-edge-0.559",
+                "type": "asociacion",
+                "label": ""
+            },
+            {
+                "fromNode": "actor_3",
+                "toNode": "usecase_4",
+                "fromSide": "edge-right-edge-0.357",
+                "toSide": "edge-left-edge-0.534",
+                "type": "asociacion",
+                "label": ""
+            }
+        ],
+        "diagramType": "usecase"
+    }
+}

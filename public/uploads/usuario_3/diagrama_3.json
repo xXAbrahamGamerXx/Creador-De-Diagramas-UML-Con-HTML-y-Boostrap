@@ -1,0 +1,133 @@
+{
+    "diagrama_id": 3,
+    "titulo": "\n                \n                \n                \n                \n                \n                \n                \n                ghjk                                                                                         ",
+    "fecha_guardado": "2026-03-27 20:46:05",
+    "version_app": "4.0",
+    "contenido": {
+        "nodes": [
+            {
+                "id": "lifeline_1",
+                "x": 181,
+                "y": 11,
+                "text": "Línea de Vida",
+                "type": "lifeline",
+                "width": 100,
+                "height": 500,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "lifeline_2",
+                "x": 298,
+                "y": 15,
+                "text": "Línea de Vida",
+                "type": "lifeline",
+                "width": 100,
+                "height": 500,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "lifeline_3",
+                "x": 440,
+                "y": 20,
+                "text": "Línea de Vida",
+                "type": "lifeline",
+                "width": 100,
+                "height": 500,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "actor_4",
+                "x": 7,
+                "y": 22,
+                "text": "Actor",
+                "type": "actor",
+                "width": 80,
+                "height": 120,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "activation_5",
+                "x": 221,
+                "y": 85,
+                "text": "Activación",
+                "type": "activation",
+                "width": 20,
+                "height": 315,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "activation_6",
+                "x": 338,
+                "y": 83,
+                "text": "Activación",
+                "type": "activation",
+                "width": 20,
+                "height": 80,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "activation_7",
+                "x": 480,
+                "y": 196,
+                "text": "Activación",
+                "type": "activation",
+                "width": 20,
+                "height": 80,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "activation_8",
+                "x": 338,
+                "y": 248,
+                "text": "Activación",
+                "type": "activation",
+                "width": 20,
+                "height": 80,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            }
+        ],
+        "connections": [
+            {
+                "fromNode": "actor_4",
+                "toNode": "activation_5",
+                "fromSide": "abs-90-left",
+                "toSide": "abs-102-left",
+                "type": "mensaje-sincrono",
+                "label": ""
+            },
+            {
+                "fromNode": "activation_5",
+                "toNode": "activation_6",
+                "fromSide": "abs-127-right",
+                "toSide": "abs-110-left",
+                "type": "mensaje-sincrono",
+                "label": ""
+            },
+            {
+                "fromNode": "activation_6",
+                "toNode": "activation_7",
+                "fromSide": "abs-130-right",
+                "toSide": "abs-218-left",
+                "type": "mensaje-sincrono",
+                "label": ""
+            }
+        ],
+        "diagramType": "sequence"
+    }
+}

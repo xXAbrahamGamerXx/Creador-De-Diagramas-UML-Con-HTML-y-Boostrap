@@ -1,0 +1,180 @@
+{
+    "diagrama_id": 6,
+    "titulo": "prueba2",
+    "fecha_guardado": "2026-04-16 00:48:37",
+    "version_app": "4.0",
+    "contenido": {
+        "nodes": [
+            {
+                "id": "system_1",
+                "x": 366.907514450867,
+                "y": 384.0173410404624,
+                "text": "Sistema",
+                "type": "system",
+                "width": 400,
+                "height": 441,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "actor_2",
+                "x": 256.06936416184965,
+                "y": 270.7225433526012,
+                "text": "Actor",
+                "type": "actor",
+                "width": 80,
+                "height": 120,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "actor_11",
+                "x": 120.80924855491332,
+                "y": 359.76878612716763,
+                "text": "Actor",
+                "type": "actor",
+                "width": 80,
+                "height": 120,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "actor_12",
+                "x": 238.03468208092477,
+                "y": 591.9653179190752,
+                "text": "Actor",
+                "type": "actor",
+                "width": 80,
+                "height": 120,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "actor_13",
+                "x": 125.31791907514446,
+                "y": 529.971098265896,
+                "text": "Actor",
+                "type": "actor",
+                "width": 80,
+                "height": 120,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "usecase_3",
+                "x": 378.907514450867,
+                "y": 440.28901734104045,
+                "text": "hola",
+                "type": "usecase",
+                "width": 150,
+                "height": 60,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": "",
+                "label": ""
+            },
+            {
+                "id": "arbol",
+                "x": 378.907514450867,
+                "y": 627.3988439306358,
+                "text": "hola",
+                "type": "usecase",
+                "width": 150,
+                "height": 60,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": "",
+                "label": ""
+            },
+            {
+                "id": "arbol 2",
+                "x": 604.907514450867,
+                "y": 585.6936416184972,
+                "text": "hola",
+                "type": "usecase",
+                "width": 150,
+                "height": 60,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": "",
+                "label": ""
+            },
+            {
+                "id": "usecase_4",
+                "x": 382.0261976559593,
+                "y": 536.1683136730647,
+                "text": "Caso de Uso",
+                "type": "usecase",
+                "width": 150,
+                "height": 60,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "usecase_5",
+                "x": 509.43119412394697,
+                "y": 424.65962796138336,
+                "text": "Caso de Uso",
+                "type": "usecase",
+                "width": 150,
+                "height": 60,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "usecase_6",
+                "x": 475,
+                "y": 642,
+                "text": "Caso de Uso",
+                "type": "usecase",
+                "width": 150,
+                "height": 60,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "usecase_7",
+                "x": 558.8534531725082,
+                "y": 676.614287146246,
+                "text": "Caso de Uso",
+                "type": "usecase",
+                "width": 150,
+                "height": 60,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "actor_8",
+                "x": 800,
+                "y": 415,
+                "text": "Actor",
+                "type": "actor",
+                "width": 80,
+                "height": 120,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            }
+        ],
+        "connections": [
+            {
+                "fromNode": "actor_2",
+                "toNode": "usecase_5",
+                "fromSide": "abs2-300-514-right-edge",
+                "toSide": "abs2-480-531-left-edge",
+                "type": "asociacion",
+                "label": "hola"
+            }
+        ],
+        "diagramType": "usecase"
+    }
+}

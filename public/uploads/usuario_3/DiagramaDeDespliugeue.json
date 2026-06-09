@@ -1,0 +1,60 @@
+{
+    "diagrama_id": 11,
+    "titulo": "DiagramaDeDespliugeue",
+    "fecha_guardado": "2026-04-18 02:19:31",
+    "version_app": "4.0",
+    "contenido": {
+        "nodes": [
+            {
+                "id": "device_1",
+                "x": 305,
+                "y": 155,
+                "text": "Dispositivo",
+                "type": "device",
+                "width": 150,
+                "height": 120,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "node_2",
+                "x": 74,
+                "y": 208,
+                "text": "Nodo",
+                "type": "node",
+                "width": 150,
+                "height": 100,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "artifact_3",
+                "x": 183,
+                "y": 416,
+                "text": "Artefacto",
+                "type": "artifact",
+                "width": 100,
+                "height": 80,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "interface_4",
+                "x": 356,
+                "y": 377,
+                "text": "Interfaz",
+                "type": "interface",
+                "width": 180,
+                "height": 120,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            }
+        ],
+        "connections": [],
+        "diagramType": "deployment"
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "diagrama_id": 1,
+    "titulo": "diagrama de clases",
+    "fecha_guardado": "2026-05-27 23:23:32",
+    "version_app": "4.0",
+    "contenido": {
+        "nodes": [
+            {
+                "id": "class_1",
+                "x": 300,
+                "y": 279,
+                "text": "Clase",
+                "type": "class",
+                "width": 180,
+                "height": 150,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "class_2",
+                "x": 141,
+                "y": 116,
+                "text": "Clase",
+                "type": "class",
+                "width": 180,
+                "height": 150,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            }
+        ],
+        "connections": [],
+        "diagramType": "class"
+    }
+}

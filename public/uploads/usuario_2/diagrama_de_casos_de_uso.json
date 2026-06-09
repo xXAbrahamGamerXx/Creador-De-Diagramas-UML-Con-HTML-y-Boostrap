@@ -1,0 +1,36 @@
+{
+    "diagrama_id": 2,
+    "titulo": "diagrama de casos de uso",
+    "fecha_guardado": "2026-05-28 00:07:21",
+    "version_app": "4.0",
+    "contenido": {
+        "nodes": [
+            {
+                "id": "system_1",
+                "x": 349,
+                "y": 170,
+                "text": "Sistema",
+                "type": "system",
+                "width": 400,
+                "height": 300,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "actor_2",
+                "x": 219,
+                "y": 210,
+                "text": "Actor",
+                "type": "actor",
+                "width": 80,
+                "height": 120,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            }
+        ],
+        "connections": [],
+        "diagramType": "usecase"
+    }
+}

@@ -1,0 +1,73 @@
+{
+    "diagrama_id": 10,
+    "titulo": "Diagrama de estados",
+    "fecha_guardado": "2026-04-18 02:28:26",
+    "version_app": "4.0",
+    "contenido": {
+        "nodes": [
+            {
+                "id": "decision_1",
+                "x": 358,
+                "y": 224,
+                "text": "Decisión",
+                "type": "decision",
+                "width": 100,
+                "height": 70,
+                "color": "#fd7e14",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "initial_1",
+                "x": 300,
+                "y": 40,
+                "text": "Inicial",
+                "type": "initial",
+                "width": 30,
+                "height": 30,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "state_1",
+                "x": 208,
+                "y": 215,
+                "text": "Estado",
+                "type": "state",
+                "width": 140,
+                "height": 60,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            }
+        ],
+        "connections": [
+            {
+                "fromNode": "decision_1",
+                "toNode": "decision_1",
+                "fromSide": "edge-top-edge-0.630",
+                "toSide": "edge-right-edge-0.514",
+                "type": "transicion",
+                "label": ""
+            },
+            {
+                "fromNode": "initial_1",
+                "toNode": "state_1",
+                "fromSide": "edge-bottom-edge-0.500",
+                "toSide": "edge-top-edge-0.514",
+                "type": "transicion",
+                "label": ""
+            },
+            {
+                "fromNode": "state_1",
+                "toNode": "decision_1",
+                "fromSide": "edge-bottom-edge-0.464",
+                "toSide": "edge-bottom-edge-0.510",
+                "type": "transicion",
+                "label": ""
+            }
+        ],
+        "diagramType": "state"
+    }
+}

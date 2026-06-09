@@ -1,0 +1,36 @@
+{
+    "diagrama_id": 2,
+    "titulo": "dfghjk",
+    "fecha_guardado": "2026-03-24 21:41:47",
+    "version_app": "4.0",
+    "contenido": {
+        "nodes": [
+            {
+                "id": "class_1",
+                "x": 400,
+                "y": 192,
+                "text": "Clase",
+                "type": "class",
+                "width": 180,
+                "height": 150,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "abstract_2",
+                "x": 71,
+                "y": 381,
+                "text": "Clase Abstracta",
+                "type": "",
+                "width": 180,
+                "height": 150,
+                "color": "#0d6efd",
+                "attributes": "hola\nnombre\napellido \ncorreo ",
+                "methods": ""
+            }
+        ],
+        "connections": [],
+        "diagramType": "class"
+    }
+}

@@ -1,0 +1,71 @@
+{
+    "diagrama_id": 3,
+    "titulo": "diagrama adeian",
+    "fecha_guardado": "2026-05-20 23:34:52",
+    "version_app": "4.0",
+    "contenido": {
+        "nodes": [
+            {
+                "id": "actor_1",
+                "x": 40,
+                "y": 20,
+                "text": "Actor",
+                "type": "actor",
+                "width": 86,
+                "height": 113,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": "",
+                "label": ""
+            },
+            {
+                "id": "lifeline_2",
+                "x": 142,
+                "y": 54,
+                "text": "Línea de Vida",
+                "type": "lifeline",
+                "width": 100,
+                "height": 500,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "activation_3",
+                "x": 182,
+                "y": 212,
+                "text": "Activación",
+                "type": "activation",
+                "width": 20,
+                "height": 80,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            },
+            {
+                "id": "activation_4",
+                "x": 70,
+                "y": 171,
+                "text": "Activación",
+                "type": "activation",
+                "width": 20,
+                "height": 80,
+                "color": "#0d6efd",
+                "attributes": "",
+                "methods": ""
+            }
+        ],
+        "connections": [
+            {
+                "fromNode": "activation_3",
+                "toNode": "activation_4",
+                "fromSide": "abs-250-left",
+                "toSide": "abs-250-left",
+                "type": "mensaje-sincrono",
+                "label": "",
+                "lineStyle": "bezier"
+            }
+        ],
+        "diagramType": "sequence"
+    }
+}
